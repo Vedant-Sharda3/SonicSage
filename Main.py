@@ -3,6 +3,7 @@ from downloader import download
 from Search import search_video_url_by_title
 from speech_text import convert_wav_to_text
 from Audio_Recorder import record_audio
+from Playlist import *
 
 
 def main():
@@ -19,7 +20,10 @@ def main():
     print(result)
     os.remove('recorded_audio.wav')
 
-    download(search_video_url_by_title(result))
+    title = download(search_video_url_by_title(result))
+    check = input('Would you like to play this song?')
+    if check == 'yes':
+        play_song(title)
 
 
 if __name__ == '__main__':

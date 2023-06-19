@@ -71,16 +71,15 @@ def likeSong(song):
 def delete_song(song):
     path = f'songs_mp3/{song}.mp3'
     if os.path.exists(path):
-        #os.remove(path)
+        os.remove(path)
         print("File deleted successfully.")
         data = pd.read_csv('song_names.csv')
         song_names = list(data.Song)
-        liked = list(data.Liked)
-        played = list(data.Played)
         for i in range(len(song_names)):
             if song in song_names[i]:
                 data = data.drop(index=i)
-        print(data)
+        data.to_csv('song_names.csv', index=False)
+        print(f'updated CSV!')
     else:
         print("File not found.")
 
@@ -96,7 +95,7 @@ def play_song(song):
         print("Press 'e' to exit the program")
 
         # take user input
-        userInput = input(" ")
+        userInput = input("-->")
 
         if userInput == 'p':
 
@@ -115,10 +114,10 @@ def play_song(song):
             print("music is stopped....")
             break
 
-
+#
 # createCSV()
 # likeSong('Gallan')
-temp = os.listdir('songs_mp3')[2].replace('.mp3', '')
-print(temp)
-play_song(temp)
-# delete_song(temp)
+# temp = os.listdir('songs_mp3')[3].replace('.mp3', '')
+# print(temp)
+# play_song(temp)
+# # delete_song(temp)
