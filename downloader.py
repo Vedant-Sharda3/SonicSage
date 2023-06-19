@@ -2,6 +2,18 @@ from pytube import YouTube
 import moviepy.editor as mp
 import os
 
+def get_links():
+    print("Paste the links of your favourite songs!")
+    links = []
+    while True:
+        link = input("Enter a link (or 'done' to finish): ")
+        if link == "done" or link == 'Done':
+            break
+        links.append(str(link))
+    return links
+
+
+
 def download(video_url):
     yt = YouTube(video_url)
     title = yt.title
@@ -16,6 +28,6 @@ def download(video_url):
     os.remove(temp_filename)
 
 
-
-dark_horse = "https://www.youtube.com/watch?v=xtoHuHgS9_o&pp=ygUKZGFyayBob3JzZQ%3D%3D"
-download(dark_horse)
+test = get_links()
+for link in test:
+    download('https://youtu.be/GSHPm2JkbUw')
