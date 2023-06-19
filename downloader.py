@@ -2,6 +2,7 @@ from pytube import YouTube
 import pytube
 import moviepy.editor as mp
 import os
+from Search import search_video_url_by_title
 
 def get_links():
     print("Paste the links of your favourite songs!")
@@ -29,10 +30,13 @@ def download(video_url):
         os.remove(temp_filename)
     except pytube.exceptions.VideoUnavailable as e:
         print('Invalid link!', e)
-    # except:
-    #     print('Error in downloading: ' + video_url)
+    except:
+        print('Error in downloading: ' + video_url)
 
+# links = ['https://www.youtube.com/watch?v=_HZM0QiuUS8&pp=ygUhaXJpcyAobGl2ZSkgYnkgdGhlIGdvbyBnb28gZG9sbHMg', 'https://www.youtube.com/watch?v=xtoHuHgS9_o&pp=ygUKZGFyayBob3JzZQ%3D%3D'] #get_links()
+# for link in links:
+#     download(link)
 
-links = ['https://www.youtube.com/watch?v=_HZM0QiuUS8&pp=ygUhaXJpcyAobGl2ZSkgYnkgdGhlIGdvbyBnb28gZG9sbHMg', 'https://www.youtube.com/watch?v=xtoHuHgS9_o&pp=ygUKZGFyayBob3JzZQ%3D%3D'] #get_links()
-for link in links:
-    download(link)
+title = input('What video would you like to download? ')
+download(search_video_url_by_title(title))
+
