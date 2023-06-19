@@ -25,7 +25,7 @@ def download(video_url):
 
         temp_filename = stream.download()  # Download the video
         mp_audio = mp.AudioFileClip(temp_filename)
-        mp_audio.write_audiofile(f"{title.replace('/','')}.mp3")
+        mp_audio.write_audiofile(f"songs_mp3/{title.replace('/','').replace('|', '').replace(':', '')}.mp3")
 
         os.remove(temp_filename)
     except pytube.exceptions.VideoUnavailable as e:
