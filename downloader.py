@@ -14,7 +14,6 @@ def get_links():
     return links
 
 
-
 def download(video_url):
     try:
         yt = YouTube(video_url)
@@ -25,15 +24,15 @@ def download(video_url):
 
         temp_filename = stream.download()  # Download the video
         mp_audio = mp.AudioFileClip(temp_filename)
-        mp_audio.write_audiofile(f"{title}.mp3")
+        mp_audio.write_audiofile(f"{title.replace('/','')}.mp3")
 
         os.remove(temp_filename)
     except pytube.exceptions.VideoUnavailable as e:
         print('Invalid link!', e)
-    except:
-        print('Error in downloading: ' + video_url)
+    # except:
+    #     print('Error in downloading: ' + video_url)
 
 
-links = ['https://youtu.be/GSHPm2JkbUw', 'https://www.youtube.com/watch?v=xtoHuHgS9_o&pp=ygUKZGFyayBob3JzZQ%3D%3D'] #get_links()
+links = ['https://www.youtube.com/watch?v=_HZM0QiuUS8&pp=ygUhaXJpcyAobGl2ZSkgYnkgdGhlIGdvbyBnb28gZG9sbHMg', 'https://www.youtube.com/watch?v=xtoHuHgS9_o&pp=ygUKZGFyayBob3JzZQ%3D%3D'] #get_links()
 for link in links:
     download(link)
