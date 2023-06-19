@@ -3,6 +3,7 @@ import pytube
 import moviepy.editor as mp
 import os
 
+
 def get_links():
     print("Paste the links of your favourite songs!")
     links = []
@@ -12,7 +13,6 @@ def get_links():
             break
         links.append(link)
     return links
-
 
 
 def download(video_url):
@@ -25,7 +25,7 @@ def download(video_url):
 
         temp_filename = stream.download()  # Download the video
         mp_audio = mp.AudioFileClip(temp_filename)
-        mp_audio.write_audiofile(f"{title}.mp3")
+        mp_audio.write_audiofile(f"C:/Users/vedant.sharda/PycharmProjects/SonicSage/songs_mp3/{title}.mp3")
 
         os.remove(temp_filename)
     except pytube.exceptions.VideoUnavailable as e:
@@ -34,6 +34,8 @@ def download(video_url):
         print('Error in downloading: ' + video_url)
 
 
-links = ['https://youtu.be/GSHPm2JkbUw', 'https://www.youtube.com/watch?v=xtoHuHgS9_o&pp=ygUKZGFyayBob3JzZQ%3D%3D'] #get_links()
+# links = get_links()
+links = ['https://youtu.be/GSHPm2JkbUw',
+         'https://www.youtube.com/watch?v=xtoHuHgS9_o&pp=ygUKZGFyayBob3JzZQ%3D%3D']
 for link in links:
     download(link)
