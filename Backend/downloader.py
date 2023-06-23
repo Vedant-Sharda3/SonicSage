@@ -34,8 +34,8 @@ def download(video_url):
         createCSV()
     except pytube.exceptions.VideoUnavailable as e:
         print('Invalid link!', e)
-    except:
-        print('Error in downloading: ' + video_url)
+    # except:
+    #     print('Error in downloading: ' + video_url)
     return title
 
 
