@@ -23,6 +23,7 @@ def player_option():
     print(choice)
     player(choice)
     return f"<p>Player</p>"
+#codepen.com - playground
 
 
 if __name__ == "__main__":

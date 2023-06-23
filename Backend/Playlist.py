@@ -9,6 +9,11 @@ def createCSV():
     if os.path.exists('song_names.csv'):
         data = pd.read_csv('song_names.csv')
         song_names = list(data.Song)
+        for name in song_names:
+            name = name + '.mp3'
+            if name not in file_names:
+                data.drop(data[data['Song'] == name.replace('.mp3', '')].index, inplace = True)
+        song_names = list(data.Song)
         prev = len(song_names)
         liked = list(data.Liked)
         played = list(data.Played)
@@ -144,7 +149,7 @@ def play_song(song):
             print("music is stopped....")
             break
 
-#
+
 # createCSV()
 # likeSong('Gallan')
 # temp = os.listdir('songs_mp3')[3].replace('.mp3', '')
