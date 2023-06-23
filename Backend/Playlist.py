@@ -114,10 +114,3 @@ def play_song(song):
             print("music is stopped....")
             break
 
-#
-# createCSV()
-# likeSong('Gallan')
-# temp = os.listdir('songs_mp3')[3].replace('.mp3', '')
-# print(temp)
-# play_song(temp)
-# # delete_song(temp)
