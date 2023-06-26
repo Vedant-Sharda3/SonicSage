@@ -2,8 +2,8 @@ from pytube import YouTube
 import pytube
 import moviepy.editor as mp
 import os
-from Search import search_video_url_by_title
-from Playlist import createCSV
+from Backend.Playlist import createCSV
+from Backend.Search import search_video_url_by_title
 
 
 def get_links():
@@ -18,6 +18,7 @@ def get_links():
 
 
 def download(video_url):
+    title = ''
     try:
         yt = YouTube(video_url)
         title = yt.title
@@ -36,6 +37,12 @@ def download(video_url):
     except:
         print('Error in downloading: ' + video_url)
     return title
+
+
+def download_by_name(name):
+    title = download(search_video_url_by_title(name))
+    return title
+
 
 # links = ['https://www.youtube.com/watch?v=_HZM0QiuUS8&pp=ygUhaXJpcyAobGl2ZSkgYnkgdGhlIGdvbyBnb28gZG9sbHMg', 'https://www.youtube.com/watch?v=xtoHuHgS9_o&pp=ygUKZGFyayBob3JzZQ%3D%3D'] #get_links()
 # for link in links:

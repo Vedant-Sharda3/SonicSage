@@ -113,10 +113,11 @@ def player(userInput):
 def play_song(song):
 
     data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
-    print(os.getcwd())
     song_names = list(data.Song)
     for i in range(len(song_names)):
+        print(song_names[i])
         if song in song_names[i]:
+            print(song_names[i])
             song = song_names[i]
             print('name is ', song)
             break

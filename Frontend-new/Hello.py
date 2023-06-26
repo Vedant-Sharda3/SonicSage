@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 from Backend.Playlist import play_song, player
+from Backend.downloader import download_by_name
+from Backend.Search import search_video_url_by_title
 
 
 app = Flask(__name__)
@@ -26,5 +28,12 @@ def player_option():
 #codepen.com - playground
 
 
+@app.route("/download", methods=["POST"])
+def download_song():
+    name = request.json['name']
+    title = download_by_name(name)
+    return f"<p>Downloaded {title}</p>"
+
+
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
