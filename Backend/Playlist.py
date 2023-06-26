@@ -124,6 +124,7 @@ def play_song(song):
     pygame.mixer.init()
     pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
     pygame.mixer.music.play()
+    return
     while True:
         print("------------------------------------------------------------------------------------")
         print("Press 'p' to pause the music")

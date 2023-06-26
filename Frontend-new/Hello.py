@@ -2,9 +2,12 @@ from flask import Flask, jsonify, request
 from Backend.Playlist import play_song, player
 from Backend.downloader import download_by_name
 from Backend.Search import search_video_url_by_title
+from flask_cors import CORS, cross_origin
 
 
 app = Flask(__name__)
+cors = CORS(app)
+
 @app.route("/hello")
 def hello_world():
     return "<p>Hello, World!!</p>"
@@ -17,14 +20,14 @@ def play_son():
     song = request.json["song"]
     print(song)
     play_song(song)
-    return f"<p>Playing {song}</p>"
+    return jsonify({"Playing": f"{song}"})
 
 @app.route("/plays")
 def play_sons():
-    song = 'Roar'
+    song = "Can't Say"
     print(song)
     play_song(song)
-    return {"haha" : "George P Burdell"}
+    return {"haha" : "Hello"}
 
 
 @app.route("/player", methods=["POST"])
@@ -44,4 +47,4 @@ def download_song():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, )
