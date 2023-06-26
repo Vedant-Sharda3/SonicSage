@@ -115,11 +115,8 @@ def play_song(song):
     data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
     song_names = list(data.Song)
     for i in range(len(song_names)):
-        print(song_names[i])
         if song in song_names[i]:
-            print(song_names[i])
             song = song_names[i]
-            print('name is ', song)
             break
     pygame.mixer.init()
     pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')

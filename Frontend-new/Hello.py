@@ -48,8 +48,10 @@ def download_song():
 @app.route("/title", methods=["POST"])
 def get_title():
     name = request.json['name']
+    print(name)
     title = search_video_title(name)
-    return {"Title": title}
+    print(title)
+    return {"title": title}
 
 
 if __name__ == "__main__":

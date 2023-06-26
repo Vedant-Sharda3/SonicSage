@@ -1,6 +1,8 @@
-function posty() {
+const name = 'Love'
+
+function posty(name) {
     fetch("http://localhost:5000/play", {
-                    method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": "Love"})
+                    method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": name})
                 })
 }
 
@@ -8,11 +10,14 @@ function posty() {
 function InputButton() {
     //const
     return (
-    <button onClick={posty}>
+    <button onClick={() => posty(name)}>
         Play Metro
     </button>
     )
 }
+
+
+export default InputButton;
 
 const Do_input = async (e) => {
     e.preventDefault();
@@ -26,5 +31,3 @@ const Do_input = async (e) => {
     const result = await response.json();
     console.log(result);
   }
-
-export default InputButton;

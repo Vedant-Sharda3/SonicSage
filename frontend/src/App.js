@@ -3,25 +3,66 @@ import './App.css';
 import PlayButton from './components/PlayButton';
 import InputButton from './components/InputButton';
 
+async function getTitle(input) {
+  try {
+    const response = await fetch("http://localhost:5000/title", {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ "name": input })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const title = data.title;
+      console.log(title);
+      return title;
+    } else {
+      throw new Error('Request failed with status ' + response.status);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
 
 function App() {
-
   const [inputText, setInputText] = useState("");
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const [title, setTitle] = useState("");
+
+  const handleChange = (e) => {
     setInputText(e.target.value);
   };
+
+  useEffect(() => {
+    const fetchTitle = async () => {
+      try {
+        const fetchedTitle = await getTitle(inputText);
+        setTitle(fetchedTitle);
+      } catch (error) {
+        // Handle the error as per your requirements
+      }
+    };
+
+    fetchTitle();
+  }, [inputText]);
+
   return (
     <div className="App">
       <header className="SonicSage">
-        <InputButton />
-        <PlayButton />
+        <h1> This is perfect </h1>
       </header>
       <body className="App">
+        <InputButton />
+        <PlayButton />
         <input type="text" onChange={handleChange} value={inputText} />
-        <p>Resultant: {inputText}</p>
+        <p>Resultant: {title}</p>
+        <p>This is {inputText}</p>
       </body>
     </div>
-  )
+  );
 }
 
 export default App;
