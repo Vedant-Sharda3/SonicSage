@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from Backend.Playlist import play_song, player
 from Backend.downloader import download_by_name
-from Backend.Search import search_video_url_by_title
+from Backend.Search import search_video_title
 from flask_cors import CORS, cross_origin
 
 
@@ -45,6 +45,12 @@ def download_song():
     title = download_by_name(name)
     return f"<p>Downloaded {title}</p>"
 
+@app.route("/title", methods=["POST"])
+def get_title():
+    name = request.json['name']
+    title = search_video_title(name)
+    return {"Title": title}
+
 
 if __name__ == "__main__":
-    app.run(debug=True, )
+    app.run(debug=True)
