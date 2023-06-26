@@ -1,26 +1,13 @@
-import React from 'react';
-import './App.css';
-
-function MyButton() {
-    return (
-    <button>
-        Play Iris
-    </button>
-    );
-}
-
-const fetchData = () => {
-fetch('http://localhost:5000/plays')
-  .then(response => response.json())
-  .catch(error => console.error('Error:', error));
-};
-
+import React, {useState, useEffect } from 'react';
+//import './App.css';
+import PlayButton from './components/PlayButton';
 function App() {
+
+
   return (
     <div className="App">
       <header className="SonicSage">
-
-        <MyButton onClick={fetchData} />
+        <PlayButton />
       </header>
     </div>
   );

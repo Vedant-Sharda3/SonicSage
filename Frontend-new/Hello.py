@@ -24,7 +24,7 @@ def play_sons():
     song = 'Roar'
     print(song)
     play_song(song)
-    return f"<p>Playing</p>"
+    return {"haha" : "George P Burdell"}
 
 
 @app.route("/player", methods=["POST"])
