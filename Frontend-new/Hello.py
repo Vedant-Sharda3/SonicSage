@@ -19,6 +19,14 @@ def play_son():
     play_song(song)
     return f"<p>Playing {song}</p>"
 
+@app.route("/plays")
+def play_sons():
+    song = 'Roar'
+    print(song)
+    play_song(song)
+    return f"<p>Playing</p>"
+
+
 @app.route("/player", methods=["POST"])
 def player_option():
     choice = request.json['choice']
