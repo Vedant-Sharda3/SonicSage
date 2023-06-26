@@ -15,18 +15,26 @@ def hello_world():
 #CLI: $set FLASK_APP = Frontend-new\Hello.py
 #CLI: $env:FLASK_APP = "Hello.py"
 
+
 @app.route("/play", methods=["POST"])
 def play_son():
     song = request.json["song"]
     print(song)
-    play_song(song)
-    return jsonify({"Playing": f"{song}"})
+    check = play_song(song)
+    if check == 0:
+        return jsonify({"Playing": f"{song}"})
+    else:
+        title = download_by_name(song)
+        print(f"Downloaded {title}")
+        check = play_song(song)
+        return jsonify({"Playing": f"Downloaded {song}"})
 
+# The below API is just a tester for postman. Do not delete!
 @app.route("/plays")
 def play_sons():
     song = "Can't Say"
     print(song)
-    play_song(song)
+    check = play_song(song)
     return {"haha" : "Hello"}
 
 

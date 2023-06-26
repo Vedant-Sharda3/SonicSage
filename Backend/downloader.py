@@ -30,12 +30,15 @@ def download(video_url):
         mp_audio = mp.AudioFileClip(temp_filename)
         title = title.replace('/', '').replace('|', '').replace(':', '').replace('"', '').replace('-', '')
         mp_audio.write_audiofile(f"C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{title}.mp3")
+        print(0)
         os.remove(temp_filename)
+        print(1)
         createCSV()
+        print(2)
     except pytube.exceptions.VideoUnavailable as e:
         print('Invalid link!', e)
-    except:
-        print('Error in downloading: ' + video_url)
+    # except:
+    #     print('Error in downloading: ' + video_url)
     return title
 
 

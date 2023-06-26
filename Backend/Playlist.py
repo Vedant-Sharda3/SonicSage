@@ -4,8 +4,7 @@ import pygame
 
 
 def createCSV():
-    file_names = os.listdir('songs_mp3')
-
+    file_names = os.listdir('C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3')
     if os.path.exists('song_names.csv'):
         data = pd.read_csv('song_names.csv')
         song_names = list(data.Song)
@@ -111,49 +110,24 @@ def player(userInput):
 
 
 def play_song(song):
-
-    data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
-    song_names = list(data.Song)
-    for i in range(len(song_names)):
-        if song in song_names[i]:
-            song = song_names[i]
-            break
-    pygame.mixer.init()
-    pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
-    pygame.mixer.music.play()
-    return
-    while True:
-        print("------------------------------------------------------------------------------------")
-        print("Press 'p' to pause the music")
-        print("Press 'r' to resume the music")
-        print("Press 'e' to exit the program")
-
-        # take user input
-        userInput = input("-->")
-
-        if userInput == 'p':
-
-            # Pause the music
-            pygame.mixer.music.pause()
-            print("music is paused....")
-        elif userInput == 'r':
-
-            # Resume the music
-            pygame.mixer.music.unpause()
-            print("music is resumed....")
-        elif userInput == 'e':
-
-            # Stop the music playback
-            pygame.mixer.music.stop()
-            print("music is stopped....")
-            break
+    try:
+        data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
+        song_names = list(data.Song)
+        song = song.replace('/', '').replace('|', '').replace(':', '').replace('"', '').replace('-', '')
+        for i in range(len(song_names)):
+            if song in song_names[i]:
+                song = song_names[i]
+                print(song)
+                break
+        pygame.mixer.init()
+        pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
+        pygame.mixer.music.play()
+        return 0
+    except:
+        print(song + " not available")
+        return 1
 
 
 # createCSV()
-# likeSong('Gallan')
-# temp = os.listdir('songs_mp3')[3].replace('.mp3', '')
-# print(temp)
-# play_song(temp)
-# # delete_song(temp)
-# for i in ['GREECE', 'rockstar', 'Box']:
-#     play_song(i)
+# check = play_song("Kanye")
+# print(check)

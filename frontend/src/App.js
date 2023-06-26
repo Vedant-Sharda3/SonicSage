@@ -4,6 +4,10 @@ import PlayButton from './components/PlayButton';
 import InputButton from './components/InputButton';
 
 async function getTitle(input) {
+  if (input === '') {
+        console.log('Empty')
+        return '';
+  }
   try {
     const response = await fetch("http://localhost:5000/title", {
       method: 'POST',
@@ -55,11 +59,10 @@ function App() {
         <h1> This is perfect </h1>
       </header>
       <body className="App">
-        <InputButton />
+        <InputButton name={title} />
         <PlayButton />
         <input type="text" onChange={handleChange} value={inputText} />
-        <p>Resultant: {title}</p>
-        <p>This is {inputText}</p>
+        <p>Song Result: {title}</p>
       </body>
     </div>
   );

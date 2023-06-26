@@ -1,17 +1,16 @@
-const name = 'Love'
-
 function posty(name) {
-    fetch("http://localhost:5000/play", {
-                    method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": name})
-                })
+    const response = fetch("http://localhost:5000/play", {
+        method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": name['name']})
+    })
+    console.log(response)
 }
 
 
-function InputButton() {
+function InputButton(name) {
     //const
     return (
     <button onClick={() => posty(name)}>
-        Play Metro
+        Play Song
     </button>
     )
 }
