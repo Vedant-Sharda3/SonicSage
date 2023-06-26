@@ -4,8 +4,8 @@ import PlayButton from './components/PlayButton';
 import InputButton from './components/InputButton';
 
 
-function App() {
 
+function App() {
   const [inputText, setInputText] = useState("");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);

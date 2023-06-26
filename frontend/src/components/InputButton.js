@@ -1,6 +1,8 @@
-function posty() {
+const name = 'Love'
+
+function posty(name) {
     fetch("http://localhost:5000/play", {
-                    method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": "Love"})
+                    method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": name})
                 })
 }
 
