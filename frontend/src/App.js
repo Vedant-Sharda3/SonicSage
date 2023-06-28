@@ -61,7 +61,7 @@ function App() {
       <body className="App">
         <InputButton name={title} />
         <PlayButton />
-        <input type="text" onChange={handleChange} value={inputText} />
+        <input type="text" onChange={handleChange} value={inputText} class='inputbox'/>
         <p>Song Result: {title}</p>
       </body>
     </div>

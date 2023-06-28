@@ -1,4 +1,5 @@
 import './InputButton.css';
+import './Button.css'
 
 function posty(name) {
     const response = fetch("http://localhost:5000/play", {
@@ -11,7 +12,7 @@ function posty(name) {
 function InputButton(name) {
     //const
     return (
-    <button onClick={() => posty(name)}>
+    <button onClick={() => posty(name)} class='button'>
         Play Song
     </button>
     )

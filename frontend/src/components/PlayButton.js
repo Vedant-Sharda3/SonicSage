@@ -1,4 +1,5 @@
 import React from 'react';
+import './Button.css'
 import './PlayButton.css';
 
 function PlayButton() {
@@ -56,7 +57,7 @@ function PlayButton() {
   return (
     <div>
       <div>
-        <button onClick={playPlaylist}>Play playlist</button>
+        <button onClick={playPlaylist} className="button">Play playlist</button>
       </div>
       <div>
         <button onClick={pausePlayer} className="pause-button">

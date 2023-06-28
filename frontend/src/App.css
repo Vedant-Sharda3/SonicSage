@@ -44,3 +44,30 @@
     transform: rotate(360deg);
   }
 }
+
+.inputbox {
+  width: 300px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.inputbox:focus {
+  outline: none;
+  border-bottom-color: #007bff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1);
+}
+
+.inputbox::placeholder {
+  color: #999;
+  opacity: 0.8;
+}
+
+
