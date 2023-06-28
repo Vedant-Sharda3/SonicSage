@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import PlayButton from './components/PlayButton';
 import InputButton from './components/InputButton';
-//import sound from './Iris.mp3'
 
 async function getTitle(input) {
   if (input === '') {
@@ -57,7 +56,7 @@ function App() {
   return (
     <div className="App">
       <header className="SonicSage">
-        <h1> This is perfect </h1>
+        <h1> This is SonicSage </h1>
       </header>
       <body className="App">
         <InputButton name={title} />

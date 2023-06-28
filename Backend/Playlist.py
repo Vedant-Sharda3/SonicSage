@@ -3,7 +3,7 @@ import pandas as pd
 import pygame
 
 def createCSV():
-    file_names = os.listdir('C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3')
+    file_names = os.listdir('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3')
     if os.path.exists('song_names.csv'):
         data = pd.read_csv('song_names.csv')
         song_names = list(data.Song)
@@ -26,7 +26,7 @@ def createCSV():
                            'Liked': liked,
                            'Played': played
                            })
-        df.to_csv('song_names.csv', index=False)
+        df.to_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
         if prev == aft:
             print('CSV already up to date!')
         else:
@@ -113,7 +113,7 @@ def player(userInput):
 
 def play_song(song):
     try:
-        data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
+        data = pd.read_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv')
         song_names = list(data.Song)
         song = song.replace('/', '').replace('|', '').replace(':', '').replace('"', '').replace('-', '')
         for i in range(len(song_names)):
@@ -121,7 +121,7 @@ def play_song(song):
                 song = song_names[i]
                 break
         pygame.mixer.init()
-        pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
+        pygame.mixer.music.load(f'C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
         pygame.mixer.music.play()
         return 0
     except:
@@ -132,7 +132,6 @@ def play_song(song):
 def play_playlist():
     pass
     return
-
 
 # createCSV()
 # check = play_song("Kanye")

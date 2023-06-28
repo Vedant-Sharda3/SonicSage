@@ -1,0 +1,35 @@
+.pause-button {
+  background-image: url('./images/pause.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 50px; /* Adjust the width and height as needed */
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.resume-button {
+  background-image: url('./images/play.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 50px; /* Adjust the width and height as needed */
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.next-button {
+  background-image: url('./images/next.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 50px; /* Adjust the width and height as needed */
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
