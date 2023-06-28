@@ -1,0 +1,29 @@
+button {
+  /* Background and border */
+  background-color: #488286;
+  border-radius: 30%;
+  border: none;
+  color: white;
+
+  /* Padding and margin */
+  padding: 10px 20px;
+  margin: 10px;
+
+  /* Typography */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  /* Hover and focus effects */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #305252; /* Darker green */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
