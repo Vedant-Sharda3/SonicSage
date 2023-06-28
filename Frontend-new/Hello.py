@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request
-from Backend.Playlist import play_song, player
+from Backend.Playlist import play_song, player, play_playlist, createCSV
 from Backend.downloader import download_by_name
 from Backend.Search import search_video_title
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS  # , cross_origin
 
 
 app = Flask(__name__)
@@ -30,11 +30,9 @@ def play_son():
         return jsonify({"Playing": f"Downloaded {song}"})
 
 # The below API is just a tester for postman. Do not delete!
-@app.route("/plays")
-def play_sons():
-    song = "Can't Say"
-    print(song)
-    check = play_song(song)
+@app.route("/playlist")
+def play_songs():
+    play_playlist()
     return {"haha" : "Hello"}
 
 
@@ -63,4 +61,5 @@ def get_title():
 
 
 if __name__ == "__main__":
+    createCSV()
     app.run(debug=True)

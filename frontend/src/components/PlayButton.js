@@ -1,6 +1,6 @@
 function PlayButton() {
     return (
-    <button onClick={()=>fetch("http://localhost:5000/plays")}>
+    <button onClick={()=>fetch("http://localhost:5000/playlist")}>
         Play dumbo
     </button>
     )

@@ -104,7 +104,7 @@ def player(userInput):
     elif userInput == 'e':
 
         # Stop the music playback
-        pygame.mixer.music.stop()
+        pygame.mixer.music.fadeout(4)
         print("music is stopped....")
         return 1
 
@@ -117,7 +117,6 @@ def play_song(song):
         for i in range(len(song_names)):
             if song in song_names[i]:
                 song = song_names[i]
-                print(song)
                 break
         pygame.mixer.init()
         pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
@@ -126,6 +125,31 @@ def play_song(song):
     except:
         print(song + " not available")
         return 1
+
+
+def play_playlist():
+    createCSV()
+    data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
+    song_names = list(data.Song)
+    print(song_names)
+    pygame.mixer.init()
+    # pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song_names[0]}.mp3')
+    # for song in song_names[1:]:
+    #     pygame.mixer.music.queue(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
+    #     print(song)
+    # pygame.mixer.music.play()
+    # print(4)
+
+    for song in song_names:
+        pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+            print(pygame.mixer.music.get_busy())
+        # play_song(song)
+        print(1)
+        print(song)
+    return
 
 
 # createCSV()
