@@ -1,3 +1,5 @@
+import './InputButton.css';
+
 function posty(name) {
     const response = fetch("http://localhost:5000/play", {
         method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": name['name']})
