@@ -4,6 +4,7 @@ import os
 pygame.init()
 pygame.mixer.init()
 
+
 songs_directory = "songs_mp3"
 song_files = os.listdir(songs_directory)
 playlist = []
@@ -32,16 +33,14 @@ def resume_song():
 
 def next_song():
     global current_song_index
-    if current_song_index < len(playlist) - 1:
-        current_song_index += 1
-    else:
-        current_song_index = 0
+    current_song_index = (current_song_index + 1) % len(playlist)
     pygame.mixer.music.stop()
     play_song()
 
+screen = pygame.display.set_mode((400, 300))
+
 play_song()
 
-screen = pygame.display.set_mode((400, 300))
 running = True
 while running:
     for event in pygame.event.get():
@@ -56,6 +55,11 @@ while running:
             elif event.key == pygame.K_RIGHT:
                 next_song()
 
+    if not pygame.mixer.music.get_busy() and is_playing:
+        next_song()
+
     pygame.time.delay(100)
 
 pygame.quit()
+
+
