@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import PlayButton from './components/PlayButton';
 import InputButton from './components/InputButton';
-import sound from './Iris.mp3'
+//import sound from './Iris.mp3'
 
 async function getTitle(input) {
   if (input === '') {
@@ -64,7 +64,6 @@ function App() {
         <PlayButton />
         <input type="text" onChange={handleChange} value={inputText} />
         <p>Song Result: {title}</p>
-        <audio src={sound} controls/>
       </body>
     </div>
   );
