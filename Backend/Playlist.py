@@ -1,9 +1,11 @@
 import os
+import time
+
 import pandas as pd
 import pygame
 
 def createCSV():
-    file_names = os.listdir('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3')
+    file_names = os.listdir('C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3')
     if os.path.exists('song_names.csv'):
         data = pd.read_csv('song_names.csv')
         song_names = list(data.Song)
@@ -26,7 +28,7 @@ def createCSV():
                            'Liked': liked,
                            'Played': played
                            })
-        df.to_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
+        df.to_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
         if prev == aft:
             print('CSV already up to date!')
         else:
@@ -45,7 +47,7 @@ def createCSV():
                        'Liked': liked,
                        'Played': played
                        })
-    df.to_csv('song_names.csv', index=False)
+    df.to_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
     print('CSV created!')
 
 
@@ -67,24 +69,26 @@ def likeSong(song):
                        'Liked': liked,
                        'Played': played
                        })
-    df.to_csv('song_names.csv', index=False)
+    df.to_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
     print(f'updated CSV!')
 
 
 def delete_song(song):
-    path = f'songs_mp3/{song}.mp3'
+    path = f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3'
     if os.path.exists(path):
         os.remove(path)
         print("File deleted successfully.")
-        data = pd.read_csv('song_names.csv')
+        data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
         song_names = list(data.Song)
         for i in range(len(song_names)):
             if song in song_names[i]:
                 data = data.drop(index=i)
-        data.to_csv('song_names.csv', index=False)
+        data.to_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
         print(f'updated CSV!')
+        return 0
     else:
         print("File not found.")
+        return 1
 
 
 def player(userInput):
@@ -103,35 +107,18 @@ def player(userInput):
     elif userInput == 'e':
 
         # Stop the music playback
-        pygame.mixer.music.fadeout(4)
+        pygame.mixer.music.fadeout(3)
+        time.sleep(1)
+        pygame.mixer.quit()
         print("music is stopped....")
         return 1
     elif userInput == 'n':
+        pygame.mixer.music.fadeout(3)
         pygame.mixer.music.set_pos(-1)
         print("playing next song....")
-
-
-def play_song(song):
-    try:
-        data = pd.read_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv')
-        song_names = list(data.Song)
-        song = song.replace('/', '').replace('|', '').replace(':', '').replace('"', '').replace('-', '')
-        for i in range(len(song_names)):
-            if song in song_names[i]:
-                song = song_names[i]
-                break
-        pygame.mixer.init()
-        pygame.mixer.music.load(f'C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
-        pygame.mixer.music.play()
-        return 0
-    except:
-        print(song + " not available")
-        return 1
-
-
-def play_playlist():
-    pass
-    return
+    elif userInput == 'u':
+        pygame.mixer.music.unload()
+        print("unloaded song....")
 
 # createCSV()
 # check = play_song("Kanye")

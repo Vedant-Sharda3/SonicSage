@@ -1,8 +1,9 @@
 from flask import Flask, jsonify, request
-from Backend.Playlist import play_song, player, play_playlist, createCSV
-from Backend.PlaylistThread import playlist_player
+from Backend.Playlist import player, createCSV, delete_song
+from Backend.PlaylistThread import playlist_player, get_curr, play_song, playlist_player_shuffled
 from Backend.downloader import download_by_name
 from Backend.Search import search_video_title
+import pandas as pd
 from flask_cors import CORS  # , cross_origin
 
 
@@ -37,6 +38,33 @@ def play_songs():
     return {"haha" : "Hello"}
 
 
+@app.route("/delete", methods=["POST"])
+def del_son():
+    song = request.json["song"]
+    print(song)
+    check = delete_song(song)
+    if check == 0:
+        print(1)
+        return jsonify({"Deleted": f"{song}"})
+    else:
+        print(2)
+        song = get_curr()
+        print(song)
+        if song == '':
+            print('No song provided')
+            return jsonify({"Deleted": "Nothing"})
+        player("u")
+        check = delete_song(song)
+        player("r")
+        return jsonify({"Deleted": f"Currently Playing {song}"})
+
+
+@app.route("/playlistshuffle")
+def play_songs_shuffle():
+    playlist_player_shuffled()
+    return {"haha" : "Hello"}
+
+
 @app.route("/player", methods=["POST"])
 def player_option():
     choice = request.json['choice']
@@ -59,6 +87,21 @@ def get_title():
     title = search_video_title(name)
     print(title)
     return {"title": title}
+
+
+@app.route("/current", methods=["GET"])
+def get_playing():
+    current = get_curr()
+    return {"current": f"{current.replace('Lyrics', '').replace('Music', '').replace('(', '').replace(')', '').replace('Video', '').replace('Official', '')}"}
+
+
+@app.route("/table", methods=["GET"])
+def get_JSON_playlist():
+    table = pd.read_csv("C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv")
+    print(table)
+    JSON_data = table.to_json()
+    print(JSON_data)
+    return JSON_data
 
 
 if __name__ == "__main__":

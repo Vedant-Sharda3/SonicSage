@@ -12,6 +12,16 @@ function PlayButton() {
     }
   };
 
+
+ const playPlaylistShuffled = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/playlistshuffle');
+      // Handle the response as needed
+    } catch (error) {
+      // Handle any errors
+    }
+  };
+
   const pausePlayer = async () => {
     try {
       const response = await fetch('http://localhost:5000/player', {
@@ -54,12 +64,29 @@ function PlayButton() {
     }
   };
 
+  const endPlayer = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/player', {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ choice: 'e' }),
+      });
+      // Handle the response as needed
+    } catch (error) {
+      // Handle any errors
+    }
+  };
+
   return (
     <div>
       <div>
         <button onClick={playPlaylist} className="button">Play playlist</button>
+        <button onClick={playPlaylistShuffled} className="button">Shuffle Play</button>
       </div>
       <div>
+        <button onClick={endPlayer} className="end-button">Q
+        </button>
         <button onClick={pausePlayer} className="pause-button">
         </button>
         <button onClick={resumePlayer} className="resume-button">

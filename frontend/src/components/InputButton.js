@@ -8,13 +8,24 @@ function posty(name) {
     console.log(response)
 }
 
+function del(name) {
+    const response = fetch("http://localhost:5000/delete", {
+        method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": name['name']})
+    })
+    console.log(response)
+}
 
 function InputButton(name) {
     //const
     return (
+    <div>
     <button onClick={() => posty(name)} class='button'>
         Play Song
     </button>
+    <button onClick={() => del(name)} class='button'>
+        Delete Song
+    </button>
+    </div>
     )
 }
 
