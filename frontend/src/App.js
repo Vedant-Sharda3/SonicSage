@@ -5,6 +5,8 @@ import InputButton from './components/InputButton';
 import TableDisplay from './components/TableDisplay';
 import Microphone from './components/Microphone';
 
+
+
 async function getTitle(input) {
   if (input === '') {
         console.log('Empty')
@@ -90,18 +92,22 @@ function App() {
   return (
     <div className="App">
       <header className="SonicSage">
-        <h1> ❤️ ------- SonicSage ------- ❤️ </h1>
-        <h3> Currently Playing: {currentSong} </h3>
+        <h1></h1>
       </header>
-      <body className="App">
-        <div class="search-tag">
-            <input type="text" onChange={handleChange} value={inputText} class='inputbox'/>
-            <Microphone class="micr"/>
+      <body >
+        <div className="Scroll">
+            <h1> Sonic Sage </h1>
+            <h3> Currently Playing: {currentSong} </h3>
+            <div class="search-tag">
+                <input type="text" onChange={handleChange} value={inputText} class='inputbox'/>
+                <Microphone class="micr"/>
+            </div>
+            <p>Song Result: {title}</p>
+            <InputButton name={title} />
+            <PlayButton />
+            <h2> 🔥 Your Songs 🔥 </h2>
+            <TableDisplay />
         </div>
-        <p>Song Result: {title}</p>
-        <InputButton name={title} />
-        <PlayButton />
-        <TableDisplay />
       </body>
     </div>
   );

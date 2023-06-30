@@ -4,6 +4,8 @@ from Backend.Audio_Recorder import record_audio
 from Backend.Playlist import *
 from Backend.Search import search_video_title
 
+#❤️ ------- SonicSage ------- ❤️
+
 
 def mic():
     print("What would you like to download today? Speak now...")

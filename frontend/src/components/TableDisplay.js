@@ -30,7 +30,6 @@ function TableDisplay() {
 
   return (
     <div>
-      <h1> 🔥 Your Songs 🔥 </h1>
       <table>
         <thead>
           <tr>
