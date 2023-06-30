@@ -5,9 +5,9 @@ import pandas as pd
 import pygame
 
 def createCSV():
-    file_names = os.listdir('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3')
-    if os.path.exists('song_names.csv'):
-        data = pd.read_csv('song_names.csv')
+    file_names = os.listdir('C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3')
+    if os.path.exists('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv'):
+        data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
         song_names = list(data.Song)
         for name in song_names:
             name = name + '.mp3'
@@ -28,7 +28,7 @@ def createCSV():
                            'Liked': liked,
                            'Played': played
                            })
-        df.to_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
+        df.to_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
         if prev == aft:
             print('CSV already up to date!')
         else:
@@ -47,12 +47,12 @@ def createCSV():
                        'Liked': liked,
                        'Played': played
                        })
-    df.to_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
+    df.to_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
     print('CSV created!')
 
 
 def likeSong(song):
-    data = pd.read_csv('song_names.csv')
+    data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
     song_names = list(data.Song)
     liked = list(data.Liked)
     played = list(data.Played)
@@ -69,21 +69,21 @@ def likeSong(song):
                        'Liked': liked,
                        'Played': played
                        })
-    df.to_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
+    df.to_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
     print(f'updated CSV!')
 
 
 def delete_song(song):
-    path = f'C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3'
+    path = f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3'
     if os.path.exists(path):
         os.remove(path)
         print("File deleted successfully.")
-        data = pd.read_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv')
+        data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
         song_names = list(data.Song)
         for i in range(len(song_names)):
             if song in song_names[i]:
                 data = data.drop(index=i)
-        data.to_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
+        data.to_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv', index=False)
         print(f'updated CSV!')
         return 0
     else:
