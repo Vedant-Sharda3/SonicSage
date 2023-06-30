@@ -1,7 +1,7 @@
 .button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #C0A9B0;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -12,7 +12,7 @@
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #C692A2;
 }
 
 .button:focus {

@@ -135,7 +135,7 @@ def get_playing():
 
 @app.route("/table", methods=["GET"])
 def get_JSON_playlist():
-    table = pd.read_csv("C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv")
+    table = pd.read_csv("C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv")
     print(table)
     JSON_data = table.to_json()
     print(JSON_data)

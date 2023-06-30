@@ -1,6 +1,6 @@
 button {
   /* Background and border */
-  background-color: #488286;
+  background-color: #845A6D;
   border-radius: 30%;
   border: none;
   color: white;
@@ -21,7 +21,7 @@ button {
 }
 
 button:hover {
-  background-color: #305252; /* Darker green */
+  background-color: #3E1929; /* Darker green */
 }
 
 button:focus {

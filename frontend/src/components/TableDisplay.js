@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './TableDisplay.css'
 
 function TableDisplay() {
   const [tableData, setTableData] = useState([]);
@@ -38,7 +38,7 @@ function TableDisplay() {
 
   return (
     <div>
-      <table>
+      <table class="table">
         <thead>
           <tr>
             <th>Song</th>
