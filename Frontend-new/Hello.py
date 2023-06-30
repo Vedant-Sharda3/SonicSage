@@ -5,8 +5,10 @@ from Backend.Playlist import player, createCSV, delete_song, queue_song
 from Backend.PlaylistThread import playlist_player, get_curr, play_song, playlist_player_shuffled
 from Backend.downloader import download_by_name
 from Backend.Search import search_video_title
+from Backend.Main import mic
 import pandas as pd
-from flask_cors import CORS  # , cross_origin
+from flask_cors import CORS  # cross_origin
+
 
 
 app = Flask(__name__)
@@ -112,13 +114,29 @@ def get_playing():
 
 @app.route("/table", methods=["GET"])
 def get_JSON_playlist():
-    table = pd.read_csv("C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv")
+    table = pd.read_csv("C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv")
     print(table)
     JSON_data = table.to_json()
     print(JSON_data)
     return JSON_data
 
+@app.route("/micro")
+def micro():
+    song = mic()
+    check = play_song(song)
+    if check == 0:
+        return jsonify({"Playing": f"{song}"})
+    else:
+        title = download_by_name(song)
+        print(f"Downloaded {title}")
+        check = play_song(song)
+        return jsonify({"Playing": f"Downloaded {song}"})
+
+
+
+
+
 
 if __name__ == "__main__":
     createCSV()
-    app.run(debug=True)
+    app.run(debug=False)

@@ -29,7 +29,7 @@ def download(video_url):
         temp_filename = stream.download()  # Download the video
         mp_audio = mp.AudioFileClip(temp_filename)
         title = title.replace('/', '').replace('|', '').replace(':', '').replace('"', '').replace('-', '')
-        mp_audio.write_audiofile(f"C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{title}.mp3")
+        mp_audio.write_audiofile(f"C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3/{title}.mp3")
         print(0)
         os.remove(temp_filename)
         print(1)
