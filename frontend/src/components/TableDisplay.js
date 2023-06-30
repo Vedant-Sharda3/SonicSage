@@ -28,6 +28,14 @@ function TableDisplay() {
     fetchTableData();
   }, []);
 
+  const renderLikedColumn = (value) => {
+    if (value === 1) {
+      return '❤️'; // Replace 1 with a heart emoji
+    } else {
+      return '-';
+    }
+  };
+
   return (
     <div>
       <h1> 🔥 Your Songs 🔥 </h1>
@@ -42,7 +50,7 @@ function TableDisplay() {
           {tableData.map((row, index) => (
             <tr key={index}>
               <td>{row.Song}</td>
-              <td>{row.Liked}</td>
+              <td>{renderLikedColumn(row.Liked)}</td>
             </tr>
           ))}
         </tbody>

@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Button.css'
 import './PlayButton.css';
 
 function PlayButton() {
+
+  const [liked, setLiked] = useState(false);
+
+  const handleToggle = () => {
+    setLiked((prevValue) => !prevValue);
+  };
+
   const playPlaylist = async () => {
     try {
-      const response = await fetch('http://localhost:5000/playlist');
-      // Handle the response as needed
+      if (liked) {
+        playLikedPlaylist();
+      } else {
+        // Call playPlaylist function
+        const response = await fetch('http://localhost:5000/playlist');
+        // Handle the response as needed
+      }
     } catch (error) {
       // Handle any errors
     }
@@ -15,7 +27,30 @@ function PlayButton() {
 
  const playPlaylistShuffled = async () => {
     try {
-      const response = await fetch('http://localhost:5000/playlistshuffle');
+      if (liked) {
+        playLikedPlaylistShuffled();
+      } else {
+        // Call playPlaylist function
+        const response = await fetch('http://localhost:5000/playlistshuffle');
+        // Handle the response as needed
+      }
+    } catch (error) {
+      // Handle any errors
+    }
+  };
+
+ const playLikedPlaylistShuffled = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/likedplaylistshuffle');
+      // Handle the response as needed
+    } catch (error) {
+      // Handle any errors
+    }
+  };
+
+ const playLikedPlaylist = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/likedplaylist');
       // Handle the response as needed
     } catch (error) {
       // Handle any errors
@@ -81,6 +116,13 @@ function PlayButton() {
   return (
     <div>
       <div>
+        <label htmlFor="toggle">Liked songs only? </label>
+        <input
+        type="checkbox"
+        id="toggle"
+        checked={liked === true}
+        onChange={handleToggle}
+        />
         <button onClick={playPlaylist} className="button">Play playlist</button>
         <button onClick={playPlaylistShuffled} className="button">Shuffle Play</button>
       </div>

@@ -4,6 +4,7 @@ import PlayButton from './components/PlayButton';
 import InputButton from './components/InputButton';
 import TableDisplay from './components/TableDisplay';
 import Microphone from './components/Microphone';
+import LikeButton from './components/LikeButton';
 
 async function getTitle(input) {
   if (input === '') {
@@ -95,6 +96,7 @@ function App() {
       </header>
       <body className="App">
         <div class="search-tag">
+            <LikeButton />
             <input type="text" onChange={handleChange} value={inputText} class='inputbox'/>
             <Microphone class="micr"/>
         </div>

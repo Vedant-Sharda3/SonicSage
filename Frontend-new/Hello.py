@@ -1,8 +1,9 @@
 import time
 
 from flask import Flask, jsonify, request
-from Backend.Playlist import player, createCSV, delete_song, queue_song
-from Backend.PlaylistThread import playlist_player, get_curr, play_song, playlist_player_shuffled
+from Backend.Playlist import player, createCSV, delete_song, queue_song, likeSong
+from Backend.PlaylistThread import playlist_player, get_curr, play_song, playlist_player_shuffled, \
+    playlist_player_liked, playlist_player_shuffled_liked
 from Backend.downloader import download_by_name
 from Backend.Search import search_video_title
 from Backend.Main import mic
@@ -42,6 +43,12 @@ def play_songs():
     return {"haha" : "Hello"}
 
 
+@app.route("/likedplaylist")
+def play_songs_liked():
+    playlist_player_liked()
+    return {"haha" : "Hello"}
+
+
 @app.route("/queue", methods=["POST"])
 def queue():
     song = request.json["song"].replace('/', '').replace('|', '').replace(':', '').replace('"', '').replace('-', '')
@@ -76,9 +83,23 @@ def del_son():
         return jsonify({"Deleted": f"Currently Playing {song}"})
 
 
+@app.route("/like")
+def like_son():
+    song = get_curr()
+    print(song)
+    check = likeSong(song)
+    return jsonify({"Liked": f"{song}"})
+
+
 @app.route("/playlistshuffle")
 def play_songs_shuffle():
     playlist_player_shuffled()
+    return {"haha" : "Hello"}
+
+
+@app.route("/likedplaylistshuffle")
+def play_songs_shuffle_liked():
+    playlist_player_shuffled_liked()
     return {"haha" : "Hello"}
 
 
@@ -114,11 +135,12 @@ def get_playing():
 
 @app.route("/table", methods=["GET"])
 def get_JSON_playlist():
-    table = pd.read_csv("C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv")
+    table = pd.read_csv("C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv")
     print(table)
     JSON_data = table.to_json()
     print(JSON_data)
     return JSON_data
+
 
 @app.route("/micro")
 def micro():
@@ -135,8 +157,6 @@ def micro():
 
 
 
-
-
 if __name__ == "__main__":
     createCSV()
-    app.run(debug=False)
+    app.run(debug=True)
