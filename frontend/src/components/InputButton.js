@@ -15,10 +15,20 @@ function del(name) {
     console.log(response)
 }
 
+function queue(name) {
+    const response = fetch("http://localhost:5000/queue", {
+        method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": name['name']})
+    })
+    console.log(response)
+}
+
 function InputButton(name) {
     //const
     return (
     <div>
+    <button onClick={() => queue(name)} class='button'>
+        Queue Song
+    </button>
     <button onClick={() => posty(name)} class='button'>
         Play Song
     </button>

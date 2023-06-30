@@ -114,11 +114,24 @@ def player(userInput):
         return 1
     elif userInput == 'n':
         pygame.mixer.music.fadeout(3)
-        pygame.mixer.music.set_pos(-1)
+        pygame.mixer.music.set_pos(10000)
         print("playing next song....")
     elif userInput == 'u':
         pygame.mixer.music.unload()
         print("unloaded song....")
+    elif userInput == 'u':
+        pygame.mixer.music.unload()
+        print("unloaded song....")
+
+
+def queue_song(song):
+    try:
+        pygame.mixer.music.queue(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
+        print("Queued " + song + " ...")
+        return 0
+    except:
+        print("Unable to find " + song)
+        return 1
 
 # createCSV()
 # check = play_song("Kanye")

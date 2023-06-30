@@ -5,12 +5,14 @@ import random as rd
 import threading
 from Backend.Playlist import createCSV
 current = ''
-
+queue = []
 
 
 def threaded_player(songs):
     global current
     pygame.mixer.init()
+    # global queue
+    # queue = songs
     try:
         for song in songs:
             print(song)

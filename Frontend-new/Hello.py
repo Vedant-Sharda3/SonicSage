@@ -1,5 +1,7 @@
+import time
+
 from flask import Flask, jsonify, request
-from Backend.Playlist import player, createCSV, delete_song
+from Backend.Playlist import player, createCSV, delete_song, queue_song
 from Backend.PlaylistThread import playlist_player, get_curr, play_song, playlist_player_shuffled
 from Backend.downloader import download_by_name
 from Backend.Search import search_video_title
@@ -37,6 +39,19 @@ def play_songs():
     playlist_player()
     return {"haha" : "Hello"}
 
+
+@app.route("/queue", methods=["POST"])
+def queue():
+    song = request.json["song"].replace('/', '').replace('|', '').replace(':', '').replace('"', '').replace('-', '')
+    print(song)
+    check = queue_song(song)
+    if check == 0:
+        return jsonify({"Queued": f"{song}"})
+    else:
+        title = download_by_name(song)
+        print(f"Downloaded {title}")
+        check = queue_song(song)
+        return jsonify({"Queued": f"Downloaded {song}"})
 
 @app.route("/delete", methods=["POST"])
 def del_son():
