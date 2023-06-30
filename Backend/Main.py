@@ -1,12 +1,11 @@
 import os
-from downloader import download
-from Search import search_video_url_by_title
-from speech_text import convert_wav_to_text
-from Audio_Recorder import record_audio
-from Playlist import *
+from Backend.speech_text import convert_wav_to_text
+from Backend.Audio_Recorder import record_audio
+from Backend.Playlist import *
+from Backend.Search import search_video_title
 
 
-def main():
+def mic():
     print("What would you like to download today? Speak now...")
     # Record the Audio
     duration = 6  # Duration in seconds
@@ -20,13 +19,11 @@ def main():
     print(result)
     os.remove('recorded_audio.wav')
 
-    title = download(search_video_url_by_title(result))
-    check = input('Would you like to play this song?')
-    if check == 'yes':
-        play_song(title)
-    song = input('What song do you want to play?')
-    play_song(song)
+    title = search_video_title(result)
+    return title
+    # check = input('Would you like to play this song?')
+    # if check == 'yes':
+    #     play_song(title)
+    # song = input('What song do you want to play?')
+    # play_song(song)
 
-
-if __name__ == '__main__':
-    main()

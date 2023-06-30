@@ -1,0 +1,32 @@
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.microphone-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #e53935;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.microphone-button:hover {
+  background-color: #c62828;
+}
+
+.microphone-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Additional styles to customize the button appearance */
+/* Add margin, padding, or other styles as needed */

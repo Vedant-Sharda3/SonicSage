@@ -3,6 +3,7 @@ import './App.css';
 import PlayButton from './components/PlayButton';
 import InputButton from './components/InputButton';
 import TableDisplay from './components/TableDisplay';
+import Microphone from './components/Microphone';
 
 async function getTitle(input) {
   if (input === '') {
@@ -93,10 +94,13 @@ function App() {
         <h3> Currently Playing: {currentSong} </h3>
       </header>
       <body className="App">
+        <div class="search-tag">
+            <input type="text" onChange={handleChange} value={inputText} class='inputbox'/>
+            <Microphone class="micr"/>
+        </div>
+        <p>Song Result: {title}</p>
         <InputButton name={title} />
         <PlayButton />
-        <input type="text" onChange={handleChange} value={inputText} class='inputbox'/>
-        <p>Song Result: {title}</p>
         <TableDisplay />
       </body>
     </div>

@@ -36,7 +36,6 @@ function TableDisplay() {
           <tr>
             <th>Song</th>
             <th>Liked</th>
-            <th>Played</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +43,6 @@ function TableDisplay() {
             <tr key={index}>
               <td>{row.Song}</td>
               <td>{row.Liked}</td>
-              <td>{row.Played}</td>
             </tr>
           ))}
         </tbody>

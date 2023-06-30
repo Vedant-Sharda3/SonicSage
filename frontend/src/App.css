@@ -70,4 +70,22 @@
   opacity: 0.8;
 }
 
+.search-tag {
+  display: flex;
+  align-items: center;
+}
+
+.inputbox {
+  /* Add desired styling for the input box */
+  /* Example styles */
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.micr {
+  /* Add desired styling for the microphone element */
+  /* Example styles */
+  margin-left: 10px;
+}
+
 

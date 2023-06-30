@@ -85,7 +85,7 @@ function PlayButton() {
         <button onClick={playPlaylistShuffled} className="button">Shuffle Play</button>
       </div>
       <div>
-        <button onClick={endPlayer} className="end-button">Q
+        <button onClick={endPlayer} className="end-button">
         </button>
         <button onClick={pausePlayer} className="pause-button">
         </button>

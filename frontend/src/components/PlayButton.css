@@ -33,3 +33,15 @@
   outline: none;
   cursor: pointer;
 }
+
+.end-button {
+  background-image: url('./images/stop.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 50px; /* Adjust the width and height as needed */
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  }
