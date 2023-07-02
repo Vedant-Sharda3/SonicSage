@@ -106,7 +106,9 @@ function App() {
             <InputButton name={title} />
             <PlayButton />
             <h2> Your Offline Music </h2>
-            <TableDisplay />
+            <div className="table-container">
+                <TableDisplay />
+            </div>
         </div>
       </body>
       <h1></h1>

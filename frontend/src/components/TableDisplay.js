@@ -28,6 +28,30 @@ function TableDisplay() {
     fetchTableData();
   }, []);
 
+  const handlePlay = (index) => {
+    const song = tableData[index].Song;
+    const response = fetch("http://localhost:5000/play", {
+        method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": song})
+    })
+    console.log(response);
+  };
+
+  const handleLike = (index) => {
+    const song = tableData[index].Song;
+    const response = fetch("http://localhost:5000/likesong", {
+        method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({"song": song})
+    })
+    console.log(response);
+    const updatedTableData = [...tableData];
+    if (updatedTableData[index].Liked === 1) {
+      updatedTableData[index].Liked = 0;
+      setTableData(updatedTableData);
+    } else {
+      updatedTableData[index].Liked = 1;
+      setTableData(updatedTableData);
+    }
+  };
+
   const renderLikedColumn = (value) => {
     if (value === 1) {
       return '❤️'; // Replace 1 with a heart emoji
@@ -36,24 +60,32 @@ function TableDisplay() {
     }
   };
 
+  const likedSongsCount = tableData.filter((row) => row.Liked === 1).length;
+
   return (
-    <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Song</th>
-            <th>Liked</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableData.map((row, index) => (
-            <tr key={index}>
-              <td>{row.Song}</td>
-              <td>{renderLikedColumn(row.Liked)}</td>
+    <div className="table-container">
+      <div className="scrollable-table">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Song ({tableData.length})</th>
+              <th>Liked ({likedSongsCount})</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {tableData.map((row, index) => (
+              <tr key={index}>
+                <td className={`song-cell ${row.Song.length > 60 ? 'scrollable' : ''}`} onClick={() => handlePlay(index)}>
+                  <div className="song-text-container">
+                    <div className="song-text">{row.Song}</div>
+                  </div>
+                </td>
+                <td onClick={() => handleLike(index)} >{renderLikedColumn(row.Liked)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

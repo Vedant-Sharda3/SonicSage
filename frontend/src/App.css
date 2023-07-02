@@ -91,6 +91,12 @@
   margin-left: 10px;
 }
 
+.table-container {
+  box-sizing: border-box;
+  max-width: 850px; /* Adjust the width as needed */
+  margin: 0 auto; /* Center align the table container */
+  border: none;
+}
 
 body {
   display: flex;
@@ -112,10 +118,7 @@ h1 {
 .Scroll {
   /*background-color: #414066;*/
   background-image: url("components/images/bg.jpg");
-  border-radius: 10px;
   padding: 40px;
-  color: #ffffff; /* Optional: Set the text color for better visibility */
-  width: 100vh;
 }
 
 @font-face {

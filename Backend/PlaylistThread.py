@@ -19,9 +19,9 @@ def threaded_player(songs):
             # play_song(song)
 
             current = song
-            length = pygame.mixer.Sound(f'C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3').get_length()
+            length = pygame.mixer.Sound(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3').get_length()
             print(length)
-            pygame.mixer.music.load(f'C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
+            pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
             pygame.mixer.music.set_endevent(1)
             pygame.mixer.music.play()
     
@@ -39,7 +39,7 @@ def threaded_player(songs):
 
 def playlist_player():
     createCSV()
-    data = pd.read_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv')
+    data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
     song_names = list(data.Song)
     t1 = threading.Thread(target=threaded_player, args=[song_names])
     t1.start()
@@ -48,7 +48,7 @@ def playlist_player():
 
 def playlist_player_liked():
     createCSV()
-    data = pd.read_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv')
+    data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
     song_names = list(data.Song)
     liked = list(data.Liked)
     liked_songs = []
@@ -63,7 +63,7 @@ def playlist_player_liked():
 
 def playlist_player_shuffled_liked():
     createCSV()
-    data = pd.read_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv')
+    data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
     song_names = list(data.Song)
     liked = list(data.Liked)
     liked_songs = []
@@ -78,7 +78,7 @@ def playlist_player_shuffled_liked():
 
 def playlist_player_shuffled():
     createCSV()
-    data = pd.read_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv')
+    data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
     song_names = list(data.Song)
     rd.shuffle(song_names)
     print(song_names)
@@ -89,7 +89,7 @@ def playlist_player_shuffled():
 
 def play_song(song):
     try:
-        data = pd.read_csv('C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv')
+        data = pd.read_csv('C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv')
         song_names = list(data.Song)
         song = song.replace('/', '').replace('|', '').replace(':', '').replace('"', '').replace('-', '')
         for i in range(len(song_names)):
@@ -97,7 +97,7 @@ def play_song(song):
                 song = song_names[i]
                 break
         pygame.mixer.init()
-        pygame.mixer.music.load(f'C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
+        pygame.mixer.music.load(f'C:/Users/athar/PycharmProjects/SonicSage/Backend/songs_mp3/{song}.mp3')
         global current
         current = song
         pygame.mixer.music.play()

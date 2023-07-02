@@ -33,7 +33,8 @@ def play_son():
     else:
         title = download_by_name(song)
         print(f"Downloaded {title}")
-        check = play_song(song)
+        print(song)
+        check = play_song(title)
         return jsonify({"Playing": f"Downloaded {song}"})
 
 # The below API is just a tester for postman. Do not delete!
@@ -91,6 +92,14 @@ def like_son():
     return jsonify({"Liked": f"{song}"})
 
 
+@app.route("/likesong", methods=["POST"])
+def like_song():
+    song = request.json['song']
+    print(song)
+    check = likeSong(song)
+    return jsonify({"Liked": f"{song}"})
+
+
 @app.route("/playlistshuffle")
 def play_songs_shuffle():
     playlist_player_shuffled()
@@ -135,7 +144,7 @@ def get_playing():
 
 @app.route("/table", methods=["GET"])
 def get_JSON_playlist():
-    table = pd.read_csv("C:/Users/vedant.sharda/PycharmProjects/SonicSage/Backend/song_names.csv")
+    table = pd.read_csv("C:/Users/athar/PycharmProjects/SonicSage/Backend/song_names.csv")
     print(table)
     JSON_data = table.to_json()
     print(JSON_data)
@@ -153,8 +162,6 @@ def micro():
         print(f"Downloaded {title}")
         check = play_song(song)
         return jsonify({"Playing": f"Downloaded {song}"})
-
-
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ function like() {
     console.log(response)
 }
 
-function LikeButton(name) {
+function LikeButton() {
     //const
     return (
     <button onClick={() => like()} class='button'>
