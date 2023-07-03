@@ -119,6 +119,7 @@ h1 {
   /*background-color: #414066;*/
   background-image: url("components/images/bg.jpg");
   padding: 40px;
+  border-radius: 10px;
 }
 
 @font-face {
